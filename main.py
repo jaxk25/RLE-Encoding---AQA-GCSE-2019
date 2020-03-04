@@ -6,32 +6,20 @@ def menu():
     """
     menuOption = raw_input("1. Enter RLE\n2. Display ASCII Art\n3. Convert to ASCII Art\n4. Convert to RLE\n5. Quit\n>>> ")
     print("")
-    inputType = 0
-    #Check input
-    if menuOption.islower():
-        inputType = 1
-        print("DEBUG: 1")
-    elif menuOption.isupper():
-        inputType = 2
-        print("DEBUG: 2")
+    menuOption = str(menuOption)
+    menuOption = menuOption.lower()
+    if menuOption == "1" or menuOption == "1. enter rle" or menuOption == "enter rle":
+        print("DEBUG RLE")
+    elif menuOption == "2" or menuOption == "2. display ascii art" or menuOption == "display ascii art":
+        print("DEBUG DISPLAY ASCII")
+    elif menuOption == "3" or menuOption == "3. convert to ascii art" or menuOption == "convert to ascii art":
+        print("DEBUG CONVERT ASCII ART")
+    elif menuOption == "4" or menuOption == "4. convert to rle" or menuOption == "convert to rle":
+        print("DEBUG CONVERT RLE")
+    elif menuOption == "5" or menuOption == "5. quit" or menuOption == "quit" or menuOption == "exit":
+        print("DEBUG EXIT")
     else:
-        inputType = 3
-        print("DEBUG: 3")
-    #Convert to lower-case string
-    if inputType == 1:
-        menuOption.lower()
-    elif inputType == 2:
-        menuOption.lower()
-        inputType = 1
-    elif inputType == 3:
-        try:
-            menuOption = str(int(menuOption))
-        except ValueError:
-            print("Error: Unable to detect type of input.\nPlease try again\n")
-            menu()
-    else:
-        print("Error: Unable to detect type of input.\nPlease try again\n")
-        menu()
+        print("DEBUG ERROR")
         
 
 #MAIN
