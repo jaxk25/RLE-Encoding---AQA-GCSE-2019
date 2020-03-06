@@ -5,45 +5,52 @@ def menu():
     """
     MAIN MENU FUNCTION
     """
-    menuOption = raw_input("1. Enter RLE\n2. Display ASCII Art\n3. Convert to ASCII Art\n4. Convert to RLE\n5. Quit\n>>> ")
+    menuOption = raw_input("1. Enter RLE\n2. Display ASCII Art\n3. Convert to ASCII Art\n4. Convert to RLE\n5. Quit\n>>> ") # ASK FOT INPUT
     print("")
-    menuOption = str(menuOption)
-    menuOption = menuOption.lower()
-    if menuOption == "1" or menuOption == "1. enter rle" or menuOption == "enter rle":
-        rle()
-    elif menuOption == "2" or menuOption == "2. display ascii art" or menuOption == "display ascii art":
-        displayArt()
-    elif menuOption == "3" or menuOption == "3. convert to ascii art" or menuOption == "convert to ascii art":
-        convertArt()
-    elif menuOption == "4" or menuOption == "4. convert to rle" or menuOption == "convert to rle":
-        convertRle()
-    elif menuOption == "5" or menuOption == "5. quit" or menuOption == "quit" or menuOption == "exit":
-        print("Thank you for using!")
-        quit()
+    menuOption = str(menuOption) # CONVERT TO STRING
+    menuOption = menuOption.lower() # CONVERT TO LOWER CASE
+    if menuOption == "1" or menuOption == "1. enter rle" or menuOption == "enter rle": # IF THE FIRST OPTION WAS PICKED
+        rleMain() # START RLEMAIN
+    elif menuOption == "2" or menuOption == "2. display ascii art" or menuOption == "display ascii art": # IF THE SECOND OPTION WAS PICKED
+        displayArtMain() # START DISPLAYARTMAIN
+    elif menuOption == "3" or menuOption == "3. convert to ascii art" or menuOption == "convert to ascii art": # IF THE THRID OPTION WAS PICKED
+        convertArtMain() # START CONVERTARTMAIN
+    elif menuOption == "4" or menuOption == "4. convert to rle" or menuOption == "convert to rle": # IF THE FOURTH OPTION WAS PICKED
+        convertRleMain() # START CONVERTRLEMAIN
+    elif menuOption == "5" or menuOption == "5. quit" or menuOption == "quit" or menuOption == "exit": # IF THE FITH OPTION WAS PICKED
+        print("Thank you for using!") # DISPLAY EXIT MESSAGE
+        quit() # QUIT
     else:
-        print("Error: Input could not be recognised.\nPlease try a recognised option - e.g. `1` or `Enter RLE`\n")
-        menu()
+        print("Error: Input could not be recognised.\nPlease try a recognised option - e.g. `1` or `Enter RLE`\n") # IF INPUT WAS NOT VALID DISPLAY ERROR MESSAGE
+        menu() # START MENU
 
-
-def rle():
+def rleMain():
     """
     ENTER COMPRESSED DATA TO UNCOMPRESS
     """
-    print("DEBUG: OPTION 1 COMING SOON")
+    rleLinesTrue = False
+    while not rleLinesTrue:
+        try:
+            rleLines = input("How many line of RLE compressed data would you like to enter?\n>>> ")
+        except KeyboardInterrupt:
+            print("Error: There was a keyboard interrupt!\nThank you for using!\n")
+            quit()
+        except:
+            print("Error: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
 
-def displayArt():
+def displayArtMain():
     """
     ENTER DATA AND DISPLAY AS ASCII ART
     """
     print("DEBUG: OPTION 2 COMING SOON")
 
-def convertArt():
+def convertArtMain():
     """
     ENTER COMPRESSED DATA AND CONVERT TO ASCII ART
     """
     print("DEBUG: OPTION 3 COMING SOON")
 
-def convertRle():
+def convertRleMain():
     """
     ENTER DATA TO COMPRESS TO RLE
     """
@@ -51,4 +58,8 @@ def convertRle():
 
 #MAIN
 print("Programming Project Task - Jack Greenacre\n")
-menu()
+try:
+    menu()
+except KeyboardInterrupt:
+    print("Thank you for using!")
+    quit()
