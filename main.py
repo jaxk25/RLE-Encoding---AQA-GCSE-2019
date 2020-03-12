@@ -1,8 +1,7 @@
 # Programming Project Task - Jack Greenacre
 # ~ Python 2.7 ~
 
-# Define global variables
-rleLines = 0
+# Create global variables
 globals()["timesRepeated"] = 0
 
 def menu():
@@ -71,7 +70,11 @@ def rleMenu():
         if menuOption == "y":
             print("")
             for i in range(1,rleLines+1):
-                rleDecode(globals()["rleLine" +str(i)])
+                if globals()["timesRepeated"] <= rleLines-1:
+                    rleDecode(globals()["rleLine" +str(i)])
+                    globals()["timesRepeated"] = globals()["timesRepeated"]+1
+                else:
+                    menu()
         elif menuOption == "n":
             print("")
             rleMenu()
@@ -98,10 +101,6 @@ def rleDecode(stringToDecode):
             count = ''
             current = 0
     print(char)
-    globals()["timesRepeated"] = globals()["timesRepeated"]+1
-    if timesRepeated >= 3:
-        print("")
-        menu()
 
 def displayArtMain():
     """
