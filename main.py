@@ -10,7 +10,7 @@ def menu():
     menuOption = str(menuOption) # CONVERT TO STRING
     menuOption = menuOption.lower() # CONVERT TO LOWER CASE
     if menuOption == "1" or menuOption == "1. enter rle" or menuOption == "enter rle": # IF THE FIRST OPTION WAS PICKED
-        rleMain() # START RLEMAIN
+        rleMenu() # START RLEMENU
     elif menuOption == "2" or menuOption == "2. display ascii art" or menuOption == "display ascii art": # IF THE SECOND OPTION WAS PICKED
         displayArtMain() # START DISPLAYARTMAIN
     elif menuOption == "3" or menuOption == "3. convert to ascii art" or menuOption == "convert to ascii art": # IF THE THRID OPTION WAS PICKED
@@ -24,9 +24,9 @@ def menu():
         print("Error: Input could not be recognised.\nPlease try a recognised option - e.g. `1` or `Enter RLE`\n") # IF INPUT WAS NOT VALID DISPLAY ERROR MESSAGE
         menu() # START MENU
 
-def rleMain():
+def rleMenu():
     """
-    ENTER COMPRESSED DATA TO UNCOMPRESS
+    ENTER COMPRESSED DATA TO DECOMPRESS
     """
     needToBreak = True
     rleLinesTrue = False
@@ -47,12 +47,12 @@ def rleMain():
                 break
     if str(type(rleLines)) != "<type 'int'>":
         print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
-        rleMain()
+        rleMenu()
     else:
         pass
     if rleLines <= 2:
         print("\nError: Sorry, that is not long enough.\nPlease try again with a value greater than `2`\n")
-        rleMain()
+        rleMenu()
     else:
         pass
     for i in range(1,rleLines+1):
@@ -60,26 +60,44 @@ def rleMain():
     print("\nYou have entered:")
     for i in range(1,rleLines+1):
         print(globals()["rleLine" +str(i)])
+    menuOption = raw_input("\nIs this correct? [Y/N]\n>>> ")
+    menuOption = str(menuOption)
+    menuOption = menuOption.lower()
+    while True:
+        if menuOption == "y":
+            rleMain()
+        elif menuOption == "n":
+            print("")
+            rleMenu()
+        else:
+            print("\nError: That was not understood.\nPlease try again with a recognised option - e.g. `y` or `n`\n")
+
+def rleMain():
+    """
+    DECOMPRESS RLE DATA FROM RLEMENU
+    """
+    print("\nDEBUG: RLE DECOMPRESSION COMING SOON\n")
+    menu()
 
 def displayArtMain():
     """
     ENTER DATA AND DISPLAY AS ASCII ART
     """
-    print("DEBUG: OPTION 2 COMING SOON")
+    print("\nDEBUG: OPTION 2 COMING SOON\n")
     menu()
 
 def convertArtMain():
     """
     ENTER COMPRESSED DATA AND CONVERT TO ASCII ART
     """
-    print("DEBUG: OPTION 3 COMING SOON")
+    print("\nDEBUG: OPTION 3 COMING SOON\n")
     menu()
 
 def convertRleMain():
     """
     ENTER DATA TO COMPRESS TO RLE
     """
-    print("DEBUG: OPTION 4 COMING SOON")
+    print("\nDEBUG: OPTION 4 COMING SOON\n")
     menu()
 
 #MAIN
