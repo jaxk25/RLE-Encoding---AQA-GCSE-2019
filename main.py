@@ -1,6 +1,10 @@
 # Programming Project Task - Jack Greenacre
 # ~ Python 2.7 ~
 
+# Define global variables
+rleLines = 0
+globals()["timesRepeated"] = 0
+
 def menu():
     """
     MAIN MENU FUNCTION
@@ -65,19 +69,39 @@ def rleMenu():
     menuOption = menuOption.lower()
     while True:
         if menuOption == "y":
-            rleMain()
+            print("")
+            for i in range(1,rleLines+1):
+                rleDecode(globals()["rleLine" +str(i)])
         elif menuOption == "n":
             print("")
             rleMenu()
         else:
             print("\nError: That was not understood.\nPlease try again with a recognised option - e.g. `y` or `n`\n")
 
-def rleMain():
+def rleDecode(stringToDecode):
     """
     DECOMPRESS RLE DATA FROM RLEMENU
     """
-    print("\nDEBUG: RLE DECOMPRESSION COMING SOON\n")
-    menu()
+    listToDecode = list(stringToDecode)
+    count = ''
+    char = ''
+    current = 0
+    untilFinished = 0
+    for item in listToDecode:
+        if current < 2:
+            count += item
+            current = current+1
+        else:
+            times = int(count)
+            for i in range(times):
+                char += item
+            count = ''
+            current = 0
+    print(char)
+    globals()["timesRepeated"] = globals()["timesRepeated"]+1
+    if timesRepeated >= 3:
+        print("")
+        menu()
 
 def displayArtMain():
     """
