@@ -28,33 +28,59 @@ def rleMain():
     """
     ENTER COMPRESSED DATA TO UNCOMPRESS
     """
+    needToBreak = True
     rleLinesTrue = False
     while not rleLinesTrue:
+        needToBreak = True
+        rleLinesTrue = False
         try:
-            rleLines = input("How many line of RLE compressed data would you like to enter?\n>>> ")
+            rleLines = input("How many lines of RLE compressed data would you like to enter?\n>>> ")
         except KeyboardInterrupt:
-            print("Error: There was a keyboard interrupt!\nThank you for using!\n")
+            print("\nError: There was a keyboard interrupt!\nThank you for using!\n")
             quit()
         except:
-            print("Error: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
+            print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
+            needToBreak = False
+        finally:
+            if needToBreak:
+                rleLinesTrue = True
+                break
+    if str(type(rleLines)) != "<type 'int'>":
+        print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
+        rleMain()
+    else:
+        pass
+    if rleLines <= 2:
+        print("\nError: Sorry, that is not long enough.\nPlease try again with a value greater than `2`\n")
+        rleMain()
+    else:
+        pass
+    for i in range(1,rleLines+1):
+        globals()["rleLine" +str(i)] = str(raw_input("\nPlease input a line of RLE encoded data.\n>>> "))
+    print("\nYou have entered:")
+    for i in range(1,rleLines+1):
+        print(globals()["rleLine" +str(i)])
 
 def displayArtMain():
     """
     ENTER DATA AND DISPLAY AS ASCII ART
     """
     print("DEBUG: OPTION 2 COMING SOON")
+    menu()
 
 def convertArtMain():
     """
     ENTER COMPRESSED DATA AND CONVERT TO ASCII ART
     """
     print("DEBUG: OPTION 3 COMING SOON")
+    menu()
 
 def convertRleMain():
     """
     ENTER DATA TO COMPRESS TO RLE
     """
     print("DEBUG: OPTION 4 COMING SOON")
+    menu()
 
 #MAIN
 print("Programming Project Task - Jack Greenacre\n")
