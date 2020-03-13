@@ -1,9 +1,6 @@
 # Programming Project Task - Jack Greenacre
 # ~ Python 2.7 ~
 
-# Create global variables
-globals()["timesRepeated"] = 0
-
 def menu():
     """
     MAIN MENU FUNCTION
@@ -88,7 +85,6 @@ def rleDecode(stringToDecode):
     count = ''
     char = ''
     current = 0
-    untilFinished = 0
     for item in listToDecode:
         if current < 2:
             count += item
