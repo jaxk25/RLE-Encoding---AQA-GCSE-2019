@@ -125,3 +125,6 @@ try:
 except KeyboardInterrupt:
     print("Thank you for using!")
     quit()
+except:
+    print("Fatal Error: An unknown error occurred!\nExiting...\nThank you for using!")
+    quit()
