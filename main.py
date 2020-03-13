@@ -101,7 +101,13 @@ def displayArtMain():
     """
     ENTER DATA AND DISPLAY AS ASCII ART
     """
-    print("\nDEBUG: OPTION 2 COMING SOON\n")
+    fileToDisplay = raw_input("What is the name of the file you would like to display?\n>>> ")
+    f = open(fileToDisplay, "r")
+    if f.mode == 'r':
+        contents = f.read()
+        print("")
+        print(contents)
+        print("")
     menu()
 
 def convertArtMain():
