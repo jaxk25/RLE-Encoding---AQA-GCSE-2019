@@ -68,18 +68,17 @@ def rleMenu():
     menuOption = menuOption.lower()
     while True:
         if menuOption == "y":
-            print("")
-            for i in range(1,rleLines+1):
-                if globals()["timesRepeated"] <= rleLines-1:
-                    rleDecode(globals()["rleLine" +str(i)])
-                    globals()["timesRepeated"] = globals()["timesRepeated"]+1
-                else:
-                    menu()
+            break
         elif menuOption == "n":
             print("")
             rleMenu()
         else:
             print("\nError: That was not understood.\nPlease try again with a recognised option - e.g. `y` or `n`\n")
+    print("")
+    for i in range(1,rleLines+1):
+        rleDecode(globals()["rleLine" +str(i)])
+    print("")
+    menu()
 
 def rleDecode(stringToDecode):
     """
