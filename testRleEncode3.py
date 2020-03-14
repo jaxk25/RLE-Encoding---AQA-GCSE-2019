@@ -1,12 +1,12 @@
-def encode(message):
+def encode(stringToEncode):
     count = 0
     chatacter = ''
-    previous_char = message[0]
+    previous_char = stringToEncode[0]
     result = ''
-    length = len(message) 
+    length = len(stringToEncode) 
     i = 0
     while (i != length ):
-        chatacter = message[i]
+        chatacter = stringToEncode[i]
         if previous_char == chatacter :
             count = count + 1
         else :
