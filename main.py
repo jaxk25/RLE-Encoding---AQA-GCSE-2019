@@ -139,8 +139,20 @@ def convertRleMain():
     """
     ENTER DATA TO COMPRESS TO RLE
     """
-    print("\nDEBUG: OPTION 4 COMING SOON\n")
-    menu()
+    fileToConvert = raw_input("What is the name of the file you would like to convert?\n>>> ")
+    try:
+        f = open(fileToConvert, "r")
+    except IOError:
+        print("\nError: That file does not exist.\nPlease try again with another file - e.g. `ASCIIArtRle.txt`\n")
+        menu()
+    f1 = f.readlines()
+    print("")
+    numberOfLines = 0
+    for x in f1:
+        globals()["encoded" +str(numberOfLines)] = rleEncode(x)
+        numberOfLines = numberOfLines+1
+    for i in range(1,numberOfLines+1):
+        print(globals()["encoded" +str(i-1)])
 
 def rleEncode(stringToEncode):
     count = 0
@@ -173,6 +185,6 @@ try:
 except KeyboardInterrupt:
     print("Thank you for using!")
     quit()
-except:
-    print("Fatal Error: An unknown error occurred!\nExiting...\nThank you for using!")
-    quit()
+#except:
+    #print("Fatal Error: An unknown error occurred!\nExiting...\nThank you for using!")
+    #quit()
