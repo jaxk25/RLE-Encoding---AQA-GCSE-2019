@@ -102,7 +102,11 @@ def displayArtMain():
     ENTER DATA AND DISPLAY AS ASCII ART
     """
     fileToDisplay = raw_input("What is the name of the file you would like to display?\n>>> ")
-    f = open(fileToDisplay, "r")
+    try:
+        f = open(fileToDisplay, "r")
+    except IOError:
+        print("\nError: That file does not exist.\nPlease try again with another file - e.g. `ASCIIArt.txt`\n")
+        menu()
     if f.mode == 'r':
         contents = f.read()
         print("")
@@ -112,9 +116,23 @@ def displayArtMain():
 
 def convertArtMain():
     """
-    ENTER COMPRESSED DATA AND CONVERT TO ASCII ART
+    ENTER COMPRESSED FILE AND CONVERT TO ASCII ART
     """
-    print("\nDEBUG: OPTION 3 COMING SOON\n")
+    fileToConvert = raw_input("What is the name of the file you would like to convert?\n>>> ")
+    try:
+        f = open(fileToConvert, "r")
+    except IOError:
+        print("\nError: That file does not exist.\nPlease try again with another file - e.g. `ASCIIArtRle.txt`\n")
+        menu()
+    f1 = f.readlines()
+    print("")
+    try:
+        for x in f1:
+            rleDecode(x)
+    except ValueError:
+        print("Error: That is not an RLE encoded file.\nPlease try again with an RLE encoded file.\n")
+        menu()
+    print("")
     menu()
 
 def convertRleMain():
