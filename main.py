@@ -156,12 +156,32 @@ def convertRleMain():
     try:
         f = open(fileToWrite, "w+")
     except IOError:
-        print("\nError: Unable to open file.\nPleast try again\n")
+        print("\nError: Unable to open file.\nPlease try again\n")
         menu()
     for i in range(1,numberOfLines+1):
         f.write(globals()["encoded" +str(i-1)])
     f.close()
     print("The new file is: " +fileToWrite +"\n")
+    try:
+        f = open(fileToConvert, "r")
+    except IOError:
+        print("\nError: Unable to open file.\nPlease try again\n")
+        menu()
+    if f.mode == "r":
+        contents = f.read()
+    lenOfFirst = len(contents)
+    f.close()
+    try:
+        f = open(fileToWrite, "r")
+    except IOError:
+        print("\nError: Unable to open file.\nPlease try again\n")
+        menu()
+    if f.mode == "r":
+        contents = f.read()
+    lenOfSecond = len(contents)
+    f.close()
+    totalSaved = lenOfFirst-lenOfSecond
+    print("The total amount of charcters saved is: " +str(totalSaved) +" characters.\n")
     menu()
 
 def rleEncode(stringToEncode):
