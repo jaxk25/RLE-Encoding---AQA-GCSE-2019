@@ -151,8 +151,18 @@ def convertRleMain():
     for x in f1:
         globals()["encoded" +str(numberOfLines)] = rleEncode(x)
         numberOfLines = numberOfLines+1
+    f.close()
+    fileToWrite = fileToConvert +".encoded.txt"
+    try:
+        f = open(fileToWrite, "w+")
+    except IOError:
+        print("\nError: Unable to open file.\nPleast try again\n")
+        menu()
     for i in range(1,numberOfLines+1):
-        print(globals()["encoded" +str(i-1)])
+        f.write(globals()["encoded" +str(i-1)])
+    f.close()
+    print("The new file is: " +fileToWrite +"\n")
+    menu()
 
 def rleEncode(stringToEncode):
     count = 0
