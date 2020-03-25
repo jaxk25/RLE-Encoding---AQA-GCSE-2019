@@ -126,12 +126,21 @@ def convertArtMain():
         menu()
     f1 = f.readlines()
     print("")
-    try:
-        for x in f1:
-            rleDecode(x)
-    except ValueError:
-        print("Error: That is not an RLE encoded file.\nPlease try again with an RLE encoded file.\n")
-        menu()
+    if ".encoded.txt" in fileToConvert:
+        try:
+            for x in f1:
+                rleDecodeFromPy(x)
+        except ValueError:
+            print("Error: That is not an RLE encoded file.\nPlease try again with an RLE encoded file.\n")
+            menu()
+        print("")
+    else:
+        try:
+            for x in f1:
+                rleDecode(x)
+        except ValueError:
+            print("Error: That is not an RLE encoded file.\nPlease try again with an RLE encoded file.\n")
+            menu()
     print("")
     menu()
 
@@ -193,7 +202,7 @@ def rleEncode(stringToEncode):
     i = 0
     while (i != length ):
         chatacter = stringToEncode[i]
-        if previous_char == chatacter :
+        if previous_char == chatacter:
             count = count + 1
         else :
             countToReturn = str(count)
@@ -208,13 +217,34 @@ def rleEncode(stringToEncode):
         countToReturn = "0" +str(countToReturn)
     return result + str(countToReturn) + str(previous_char)
 
+def rleDecodeFromPy(stringToDecode):
+    """
+    DECOMPRESS RLE DATA FROM FILE THAT WAS ENCODED WITH RLEENCODE
+    """
+    listToDecode = list(stringToDecode)
+    count = ''
+    char = ''
+    current = 0
+    for item in listToDecode:
+        if current < 2:
+            count += item
+            current = current+1
+        else:
+            times = int(count)
+            for i in range(times):
+                char += item
+            count = ''
+            current = 0
+    print char,
+
 #MAIN
-print("Programming Project Task - Jack Greenacre\n")
-try:
-    menu()
-except KeyboardInterrupt:
-    print("Thank you for using!")
-    quit()
-#except:
-    #print("Fatal Error: An unknown error occurred!\nExiting...\nThank you for using!")
-    #quit()
+if __name__ == "__main__":
+    print("Programming Project Task - Jack Greenacre\n")
+    try:
+        menu()
+    except KeyboardInterrupt:
+        print("Thank you for using!")
+        quit()
+    except:
+        print("Fatal Error: An unknown error occurred!\nExiting...\nThank you for using!")
+        quit()
