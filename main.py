@@ -1,28 +1,28 @@
-# Programming Project Task - Jack Greenacre
+# AQA GCSE NEA 2019-2020 - Jack Greenacre
 # ~ Python 2.7 ~
 
-def menu():
+def menu(): # Function for the main menu
     """
     MAIN MENU FUNCTION
     """
-    menuOption = raw_input("1. Enter RLE\n2. Display ASCII Art\n3. Convert to ASCII Art\n4. Convert to RLE\n5. Quit\n>>> ") # ASK FOT INPUT
+    menuOption = raw_input("1. Enter RLE\n2. Display ASCII Art\n3. Convert to ASCII Art\n4. Convert to RLE\n5. Quit\n>>> ") # Ask for user input
     print("")
-    menuOption = str(menuOption) # CONVERT TO STRING
-    menuOption = menuOption.lower() # CONVERT TO LOWER CASE
-    if menuOption == "1" or menuOption == "1. enter rle" or menuOption == "enter rle": # IF THE FIRST OPTION WAS PICKED
-        rleMenu() # START RLEMENU
-    elif menuOption == "2" or menuOption == "2. display ascii art" or menuOption == "display ascii art": # IF THE SECOND OPTION WAS PICKED
-        displayArtMain() # START DISPLAYARTMAIN
-    elif menuOption == "3" or menuOption == "3. convert to ascii art" or menuOption == "convert to ascii art": # IF THE THRID OPTION WAS PICKED
-        convertArtMain() # START CONVERTARTMAIN
-    elif menuOption == "4" or menuOption == "4. convert to rle" or menuOption == "convert to rle": # IF THE FOURTH OPTION WAS PICKED
-        convertRleMain() # START CONVERTRLEMAIN
-    elif menuOption == "5" or menuOption == "5. quit" or menuOption == "quit" or menuOption == "exit": # IF THE FITH OPTION WAS PICKED
-        print("Thank you for using!") # DISPLAY EXIT MESSAGE
-        quit() # QUIT
-    else:
-        print("Error: Input could not be recognised.\nPlease try a recognised option - e.g. `1` or `Enter RLE`\n") # IF INPUT WAS NOT VALID DISPLAY ERROR MESSAGE
-        menu() # START MENU
+    menuOption = str(menuOption) # Convert to string
+    menuOption = menuOption.lower() # Convert to lower case
+    if menuOption == "1" or menuOption == "1. enter rle" or menuOption == "enter rle": # If the first option was picked,
+        rleMenu() # Call the rleMenu function
+    elif menuOption == "2" or menuOption == "2. display ascii art" or menuOption == "display ascii art": # If the second option was picked,
+        displayArtMain() # Call the displayArtMain function
+    elif menuOption == "3" or menuOption == "3. convert to ascii art" or menuOption == "convert to ascii art": # If the third option was picked,
+        convertArtMain() # Call the convertArtMain function
+    elif menuOption == "4" or menuOption == "4. convert to rle" or menuOption == "convert to rle": # If the fourth option was picked,
+        convertRleMain() # Call the convertRleMain function
+    elif menuOption == "5" or menuOption == "5. quit" or menuOption == "quit" or menuOption == "exit": # If the fifth option was picked,
+        print("Thank you for using!") # Display an exit message
+        quit() # Quit the program
+    else: # If other option was picked,
+        print("Error: Input could not be recognised.\nPlease try a recognised option - e.g. `1` or `Enter RLE`\n") # Give an error
+        menu() # Call the menu function to allow user to pick again
 
 def rleMenu():
     """
