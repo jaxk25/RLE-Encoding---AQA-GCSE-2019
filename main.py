@@ -112,6 +112,7 @@ def displayArtMain(): # Function to display ASCII art from file
         print("") # Print an empty line
         print(contents) # Print the contents of the file
         print("") # Print an empty line
+    f.close() # Close the file
     menu() # Call the menu function to show the main menu
 
 def convertArtMain():
