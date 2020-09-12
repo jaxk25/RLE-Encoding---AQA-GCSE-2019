@@ -1,5 +1,5 @@
 # RLE Encoding - AQA GCSE 2019
- AQA Computer Science Programming Project Task for the 2019 GCSE. Coded in Python 2.7.17.  
+ AQA Computer Science NEA for the 2019-2020 GCSE. Coded in Python 2.7.  
  This is NOT being submitted to AQA as part of a GCSE.  
  **THIS IS CURRENTLY BEING UPDATED**   
 # Original Instructions:  
