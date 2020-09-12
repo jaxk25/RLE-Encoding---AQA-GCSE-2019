@@ -24,58 +24,58 @@ def menu(): # Function for the main menu
         print("Error: Input could not be recognised.\nPlease try a recognised option - e.g. `1` or `Enter RLE`\n") # Give an error
         menu() # Call the menu function to allow user to pick again
 
-def rleMenu():
+def rleMenu(): # Function for decompression function and menu
     """
     ENTER COMPRESSED DATA TO DECOMPRESS
     """
-    needToBreak = True
-    rleLinesTrue = False
-    while not rleLinesTrue:
-        needToBreak = True
-        rleLinesTrue = False
+    needToBreak = True # Preset variables
+    rleLinesTrue = False # Preset variables
+    while not rleLinesTrue: # While user is entering amount of lines,
+        needToBreak = True # Reset variable
+        rleLinesTrue = False # Reset variable
         try:
-            rleLines = input("How many lines of RLE compressed data would you like to enter?\n>>> ")
-        except KeyboardInterrupt:
-            print("\nError: There was a keyboard interrupt!\nThank you for using!\n")
-            quit()
-        except:
-            print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
-            needToBreak = False
-        finally:
-            if needToBreak:
-                rleLinesTrue = True
-                break
-    if str(type(rleLines)) != "<type 'int'>":
-        print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n")
-        rleMenu()
-    else:
-        pass
-    if rleLines <= 2:
-        print("\nError: Sorry, that is not long enough.\nPlease try again with a value greater than `2`\n")
-        rleMenu()
-    else:
-        pass
-    for i in range(1,rleLines+1):
-        globals()["rleLine" +str(i)] = str(raw_input("\nPlease input a line of RLE encoded data.\n>>> "))
-    print("\nYou have entered:")
-    for i in range(1,rleLines+1):
-        print(globals()["rleLine" +str(i)])
-    menuOption = raw_input("\nIs this correct? [Y/N]\n>>> ")
-    menuOption = str(menuOption)
-    menuOption = menuOption.lower()
-    while True:
-        if menuOption == "y":
-            break
-        elif menuOption == "n":
-            print("")
-            rleMenu()
-        else:
-            print("\nError: That was not understood.\nPlease try again with a recognised option - e.g. `y` or `n`\n")
-    print("")
-    for i in range(1,rleLines+1):
-        rleDecode(globals()["rleLine" +str(i)])
-    print("")
-    menu()
+            rleLines = input("How many lines of RLE compressed data would you like to enter?\n>>> ") # Ask for user input
+        except KeyboardInterrupt: # If user pressed C^c,
+            print("\nError: There was a keyboard interrupt!\nThank you for using!\n") # Display an exit message
+            quit() # Quit the program
+        except: # If there was an error with the input,
+            print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n") # Give an error
+            needToBreak = False # Set variable
+        finally: # If there was no errors,
+            if needToBreak: # Check if it is ok to break the loop
+                rleLinesTrue = True # Set variable
+                break # Break out of loop
+    if str(type(rleLines)) != "<type 'int'>": # Check if the rleLines is not an integer
+        print("\nError: Sorry, that is not a valid number.\nPlease try again with a recognised option - e.g. `2` or `6`\n") # Give an error
+        rleMenu() # Call the rleMenu function to restart the RLE decompression menu and function
+    else: # If the rleLines is an integer,
+        pass # Continue
+    if rleLines <= 2: # Check how many lines the user wants to enter. If rleLines is smaller than 3,
+        print("\nError: Sorry, that is not long enough.\nPlease try again with a value greater than `2`\n") # Give an error
+        rleMenu() # Call the rleMenu function to restart the RLE decompression menu and function
+    else: # If rleLines in above 2,
+        pass # Continue
+    for i in range(1,rleLines+1): # Repeat for the amount of lines that the user wants to enter
+        globals()["rleLine" +str(i)] = str(raw_input("\nPlease input a line of RLE encoded data.\n>>> ")) # Set variable with RLE encoded data
+    print("\nYou have entered:") # Recall data to show to user
+    for i in range(1,rleLines+1): # Repeat for amount of lines of encoded data entered
+        print(globals()["rleLine" +str(i)]) # Print the encoded data
+    menuOption = raw_input("\nIs this correct? [Y/N]\n>>> ") # Ask for user input to confirm if data is correct
+    menuOption = str(menuOption) # Convert to string
+    menuOption = menuOption.lower() # Convert to lower-case
+    while True: # Repeat until broken
+        if menuOption == "y": # If user input is yes,
+            break # Break out of loop
+        elif menuOption == "n": # Is user input is no,
+            print("") # Print an empty line
+            rleMenu() # Call the rleMenu function to restart the RLE decompression menu and function
+        else: # If the user input is neither,
+            print("\nError: That was not understood.\nPlease try again with a recognised option - e.g. `y` or `n`\n") # Give an error
+    print("") # Print an empty line
+    for i in range(1,rleLines+1): # For the amount of lines that the user inputted,
+        rleDecode(globals()["rleLine" +str(i)]) # Call the rleDecode function to decode the encoded data
+    print("") # Print an empty line
+    menu() # Call the menu function to show the main function
 
 def rleDecode(stringToDecode):
     """
