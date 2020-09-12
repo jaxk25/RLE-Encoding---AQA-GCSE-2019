@@ -75,7 +75,7 @@ def rleMenu(): # Function for decompression function and menu
     for i in range(1,rleLines+1): # For the amount of lines that the user inputted,
         rleDecode(globals()["rleLine" +str(i)]) # Call the rleDecode function to decode the encoded data
     print("") # Print an empty line
-    menu() # Call the menu function to show the main function
+    menu() # Call the menu function to show the main menu
 
 def rleDecode(stringToDecode): # Function to decompress encoded data
     """
@@ -97,22 +97,22 @@ def rleDecode(stringToDecode): # Function to decompress encoded data
             current = 0 # Reset variable
     print(char) # Print the decoded data
 
-def displayArtMain():
+def displayArtMain(): # Function to display ASCII art from file
     """
     ENTER DATA AND DISPLAY AS ASCII ART
     """
-    fileToDisplay = raw_input("What is the name of the file you would like to display?\n>>> ")
+    fileToDisplay = raw_input("What is the name of the file you would like to display?\n>>> ") # Ask for user input
     try:
-        f = open(fileToDisplay, "r")
-    except IOError:
-        print("\nError: That file does not exist.\nPlease try again with another file - e.g. `ASCIIArt.txt`\n")
-        menu()
-    if f.mode == 'r':
-        contents = f.read()
-        print("")
-        print(contents)
-        print("")
-    menu()
+        f = open(fileToDisplay, "r") # Try to open file
+    except IOError: # If file does not exist,
+        print("\nError: That file does not exist.\nPlease try again with another file - e.g. `ASCIIArt.txt`\n") # Give an error 
+        menu() # Call the menu function to show the main menu
+    if f.mode == 'r': # If the file opened correctly in read mode,
+        contents = f.read() # Store the contents in a variable
+        print("") # Print an empty line
+        print(contents) # Print the contents of the file
+        print("") # Print an empty line
+    menu() # Call the menu function to show the main menu
 
 def convertArtMain():
     """
