@@ -77,25 +77,25 @@ def rleMenu(): # Function for decompression function and menu
     print("") # Print an empty line
     menu() # Call the menu function to show the main function
 
-def rleDecode(stringToDecode):
+def rleDecode(stringToDecode): # Function to decompress encoded data
     """
     DECOMPRESS RLE DATA FROM RLEMENU
     """
-    listToDecode = list(stringToDecode)
-    count = ''
-    char = ''
-    current = 0
-    for item in listToDecode:
-        if current < 2:
-            count += item
-            current = current+1
-        else:
-            times = int(count)
-            for i in range(times):
-                char += item
-            count = ''
-            current = 0
-    print(char)
+    listToDecode = list(stringToDecode) # Store data to decode in a list
+    count = '' # Preset variable
+    char = '' # Preset variable
+    current = 0 # Preset variable
+    for item in listToDecode: # Repeat for each item in the list
+        if current < 2: # If current is less than two,
+            count += item # Add the current item to count
+            current = current+1 # Iterate current
+        else: # If current is more than 1,
+            times = int(count) # Set times to the integer version of count
+            for i in range(times): # For the amount of times
+                char += item # Add item to char variable
+            count = '' # Reset variable
+            current = 0 # Reset variable
+    print(char) # Print the decoded data
 
 def displayArtMain():
     """
